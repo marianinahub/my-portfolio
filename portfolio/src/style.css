@@ -775,3 +775,96 @@ background-size:cover;
 background-position:center;
 background-attachment:fixed; /* легкий паралакс */
 }
+
+/* ---------- LANGUAGE SWITCH PREMIUM ---------- */
+
+.lang-switch{
+position:fixed;
+top:20px;
+right:20px;
+z-index:9999;
+cursor:pointer;
+}
+
+/* контейнер */
+.switch{
+width:80px;
+height:36px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+
+padding: 4px;
+
+border-radius:20px;
+
+background:rgba(255,255,255,0.08);
+backdrop-filter:blur(12px);
+
+color:white;
+font-size:13px;
+font-weight:600;
+
+position:relative;
+
+transition:0.3s;
+}
+
+/* glow hover */
+.lang-switch:hover .switch{
+background:rgba(255,255,255,0.12);
+box-shadow:0 0 20px rgba(99,102,241,0.6);
+}
+
+/* кружок */
+.switch::after{
+content:"";
+position:absolute;
+top:4px;
+left:4px;
+
+width:28px;
+height:28px;
+
+border-radius:50%;
+
+background:linear-gradient(135deg,#6366f1,#8b5cf6);
+
+/* glow */
+box-shadow:0 0 15px rgba(99,102,241,0.8);
+
+/* пружна анімація */
+transition:
+transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+box-shadow 0.3s;
+}
+
+/* рух (ІДЕАЛЬНИЙ) */
+.switch.en::after{
+transform:translateX(42px);
+}
+
+/* клік ефект */
+.lang-switch:active .switch::after{
+box-shadow:0 0 30px rgba(99,102,241,1);
+transform:scale(1.1);
+}
+
+/* текст поверх */
+.switch span{
+z-index:2;
+}
+
+/* адаптив */
+@media (max-width:768px){
+.switch{
+width:70px;
+height:32px;
+font-size:12px;
+}
+
+.switch::after{
+width:24px;
+height:24px;
+}
+}

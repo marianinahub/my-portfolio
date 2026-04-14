@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react"
+import { useContext } from "react"
+import { LanguageContext } from "./context/LanguageContext"
 
 import Hero from "./components/Hero"
 import About from "./components/About"
@@ -9,13 +11,17 @@ import Loader from "./components/Loader"
 
 function App(){
 
+const { lang, toggleLang } = useContext(LanguageContext)
+
 const [loading, setLoading] = useState(true)
 const [active, setActive] = useState("")
 
+// loader
 useEffect(()=>{
 setTimeout(()=>setLoading(false),1500)
 },[])
 
+// scroll active section
 useEffect(()=>{
 const sections = document.querySelectorAll("section")
 
@@ -39,11 +45,31 @@ return(
 
 <div>
 
+<div className="lang-switch" onClick={toggleLang}>
+  <div className={`switch ${lang === "en" ? "en" : "ua"}`}>
+    <span>UA</span>
+    <span>EN</span>
+  </div>
+</div>
+
 <nav className="nav">
-<a className={active==="about" ? "active":""} href="#about">Про мене</a>
-<a className={active==="projects" ? "active":""} href="#projects">Проєкти</a>
-<a className={active==="experience" ? "active":""} href="#experience">Досвід</a>
-<a href="#contact">Контакти</a>
+
+<a href="#about">
+{lang === "ua" ? "Про мене" : "About"}
+</a>
+
+<a href="#projects">
+{lang === "ua" ? "Проєкти" : "Projects"}
+</a>
+
+<a href="#experience">
+{lang === "ua" ? "Досвід" : "Experience"}
+</a>
+
+<a href="#contact">
+{lang === "ua" ? "Контакти" : "Contact"}
+</a>
+
 </nav>
 
 <Hero/>

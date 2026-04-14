@@ -1,29 +1,34 @@
 import { motion } from "framer-motion"
+import { useContext } from "react"
+import { LanguageContext } from "../context/LanguageContext"
 
 export default function About(){
 
+const { lang } = useContext(LanguageContext)
+
 return(
 
-<motion.section
-id="about"
-initial={{ opacity:0, y:50 }}
-whileInView={{ opacity:1, y:0 }}
-transition={{ duration:0.6 }}
-viewport={{ once:true }}
->
-
-<h2>Про мене</h2>
+<section id="about">
+<h2>
+{lang === "en" ? "About me" : "Про мене"}
+</h2>
 
 <p>
-Full Stack Developer з фокусом на створення сучасних веб-додатків.
+{lang === "en"
+? `Full Stack Developer focused on building modern web applications.
 
-Працюю з React, Node.js та MongoDB.
+I work with HTML, CSS, JavaScript, React, TypeScript, Node.js and MongoDB.
+I learn quickly, love clean code, and modern design.
+
+Open to new opportunities and team collaboration.`
+: `Full Stack Developer з фокусом на створення сучасних веб-додатків.
+
+Працюю з HTML, CSS, JavaScript, React, TypeScript, Node.js та MongoDB.
 Швидко навчаюсь, люблю чистий код та сучасний дизайн.
 
-Відкрита до нових можливостей та команди.
+Відкрита до нових можливостей та команди.`}
 </p>
-
-</motion.section>
+</section>
 
 )
 

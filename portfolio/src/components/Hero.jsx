@@ -1,6 +1,10 @@
 import { motion } from "framer-motion"
+import { useContext } from "react"
+import { LanguageContext } from "../context/LanguageContext"
 
 export default function Hero(){
+
+const { lang } = useContext(LanguageContext)
 
 return(
 
@@ -15,8 +19,15 @@ animate={{ opacity:1, y:0 }}
 transition={{ duration:1 }}
 >
 
-<h1>Марія-Ніна</h1>
-<p>Full Stack Developer</p>
+<h1>{lang === "en"
+? "Maria-Nina"
+: "Марія-Ніна"}</h1>
+
+<p>
+{lang === "en"
+? "Full Stack Developer"
+: "Full Stack Developer"}
+</p>
 
 </motion.div>
 

@@ -1,7 +1,10 @@
-import { useState } from "react"
+import { useContext, useState } from "react"
 import { motion } from "framer-motion"
+import { LanguageContext } from "../context/LanguageContext"
 
 export default function Contact(){
+
+const { lang } = useContext(LanguageContext) 
 
 const [status, setStatus] = useState("")
 
@@ -11,26 +14,24 @@ e.preventDefault()
 const formData = new FormData(e.target)
 
 try{
-
 const res = await fetch("https://formspree.io/f/mojyvapo", {
 method:"POST",
 body:formData,
-headers:{
-Accept:"application/json"
-}
+headers:{ Accept:"application/json" }
 })
 
 if(res.ok){
-setStatus("Дякую! Повідомлення надіслано 💌")
+setStatus(lang==="ua" 
+? "Дякую! Повідомлення надіслано 💌"
+: "Message sent successfully 💌")
 e.target.reset()
 }else{
-setStatus("Помилка 😢")
+setStatus(lang==="ua" ? "Помилка 😢" : "Error 😢")
 }
 
 }catch{
-setStatus("Помилка мережі 😢")
+setStatus(lang==="ua" ? "Помилка мережі 😢" : "Network error 😢")
 }
-
 }
 
 return(
@@ -43,7 +44,7 @@ transition={{ duration:0.7 }}
 viewport={{ once:true }}
 >
 
-<h2>Контакти</h2>
+<h2>{lang === "ua" ? "Контакти" : "Contact"}</h2>
 
 <div className="contact-info">
 
@@ -51,13 +52,15 @@ viewport={{ once:true }}
 className="contact-item"
 onClick={()=>{
 navigator.clipboard.writeText("maruaninashved1488@gmail.com")
-setStatus("Email скопійовано 📋")
+setStatus(lang==="ua"
+? "Email скопійовано 📋"
+: "Email copied 📋")
 }}
 >
 <div className="icon">✉️</div>
 <div>
 <h4>Email</h4>
-<p>Натисни щоб скопіювати</p>
+<p>{lang==="ua"?"Натисни щоб скопіювати":"Click to copy"}</p>
 </div>
 </div>
 
@@ -81,7 +84,7 @@ setStatus("Email скопійовано 📋")
 
 <div className="contact-box">
 
-<h3>Написати мені</h3>
+<h3>{lang === "ua" ? "Написати мені" : "Contact me"}</h3>
 
 <form onSubmit={handleSubmit} className="contact-form">
 
@@ -92,10 +95,12 @@ setStatus("Email скопійовано 📋")
 
 <div className="input-group">
 <textarea name="message" required />
-<label>Повідомлення</label>
+<label>{lang==="ua"?"Повідомлення":"Message"}</label>
 </div>
 
-<button type="submit">Надіслати</button>
+<button>
+{lang === "ua" ? "Надіслати" : "Send"}
+</button>
 
 </form>
 
