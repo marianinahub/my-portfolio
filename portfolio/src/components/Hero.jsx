@@ -1,4 +1,4 @@
-<img src="../assets/hero.png" className="hero-image" />
+import { motion } from "framer-motion"
 
 export default function Hero(){
 
@@ -6,16 +6,19 @@ return(
 
 <section className="hero">
 
-<h1>Марія-Ніна Аксеніч</h1>
+<div className="hero-overlay"></div>
 
+<motion.div
+className="hero-content"
+initial={{ opacity:0, y:40 }}
+animate={{ opacity:1, y:0 }}
+transition={{ duration:1 }}
+>
+
+<h1>Марія-Ніна</h1>
 <p>Full Stack Developer</p>
 
-<div className="buttons">
-
-<a href="#projects">Проєкти</a>
-<a href="#contact">Контакти</a>
-
-</div>
+</motion.div>
 
 </section>
 

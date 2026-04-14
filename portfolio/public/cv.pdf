@@ -1,0 +1,17 @@
+export default function CV(){
+
+return(
+
+<section>
+
+<h1>Моє CV</h1>
+
+<a href="/cv.pdf" download>
+Завантажити CV
+</a>
+
+</section>
+
+)
+
+}

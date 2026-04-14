@@ -1,38 +1,66 @@
+import { motion } from "framer-motion"
+import { useEffect, useState } from "react"
+
 export default function Projects(){
+
+const [repos, setRepos] = useState([])
+
+useEffect(() => {
+
+fetch("https://api.github.com/users/marianinahub/repos")
+.then(res => res.json())
+.then(data => {
+  if(Array.isArray(data)){
+    setRepos(data)
+  }
+})
+
+}, [])
 
 return(
 
 <section id="projects">
 
-<h2>Проєкти</h2>
+<h2>Мої проєкти</h2>
 
-<div className="projects">
+<motion.div
+className="projects"
+initial="hidden"
+whileInView="visible"
+viewport={{ once:true }}
+variants={{
+hidden:{},
+visible:{
+transition:{ staggerChildren:0.2 }
+}
+}}
+>
 
-<div className="card">
+{repos.slice(0,6).map(repo => (
 
-<h3>Lombard App</h3>
+<motion.div
+className="card"
+key={repo.id}
+variants={{
+hidden:{ opacity:0, y:50 },
+visible:{ opacity:1, y:0 }
+}}
+whileHover={{ scale:1.05 }}
+>
 
-<p>
-Вебсторінка для ломбарду, де можна переглядати товари, додавати їх до кошика та оформляти замовлення.
-</p>
+<h3>{repo.name}</h3>
 
-<a href="https://github.com/marianinahub/lombard_comod">GitHub</a>
+<p>{repo.description || "No description"}</p>
 
-</div>
+<a href={repo.html_url} target="_blank">
+GitHub
+</a>
 
-<div className="card">
+</motion.div>
 
-<h3>Movie Search</h3>
+))}
 
-<p>
-Пошук фільмів через API
-</p>
-
-<a href="https://github.com/marianinahub/04-react-query">GitHub</a>
-
-</div>
-
-</div>
+</motion.div>
 
 </section>
 

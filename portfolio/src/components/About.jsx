@@ -1,19 +1,29 @@
+import { motion } from "framer-motion"
+
 export default function About(){
 
 return(
 
-<section id="about">
+<motion.section
+id="about"
+initial={{ opacity:0, y:50 }}
+whileInView={{ opacity:1, y:0 }}
+transition={{ duration:0.6 }}
+viewport={{ once:true }}
+>
 
 <h2>Про мене</h2>
 
 <p>
+Full Stack Developer з фокусом на створення сучасних веб-додатків.
 
-Я Full Stack розробник.  
-Створюю веб-додатки на React, Node.js та MongoDB.
+Працюю з React, Node.js та MongoDB.
+Швидко навчаюсь, люблю чистий код та сучасний дизайн.
 
+Відкрита до нових можливостей та команди.
 </p>
 
-</section>
+</motion.section>
 
 )
 

@@ -1,43 +1,112 @@
+/* ---------- BASE ---------- */
+
 body{
-font-family:Arial;
 margin:0;
+font-family:sans-serif;
 background:#0f172a;
 color:white;
 }
 
+html{
+scroll-behavior:smooth;
+}
+
 section{
-padding:80px;
+padding:120px 20px;
 text-align:center;
 }
 
-.hero{
-height:70vh;
+h2{
+font-size:40px;
+margin-bottom:30px;
+}
+
+/* ---------- NAVBAR ---------- */
+
+.nav{
+position:fixed;
+top:0;
+width:100%;
 
 display:flex;
-flex-direction:column;
+justify-content:center;
+gap:30px;
+
+padding:20px;
+
+background:rgba(0,0,0,0.5);
+backdrop-filter:blur(10px);
+
+z-index:1000;
+}
+
+.nav a{
+color:white;
+text-decoration:none;
+transition:0.3s;
+}
+
+.nav a.active{
+color:#6366f1;
+}
+
+/* ---------- HERO ---------- */
+
+.hero{
+height:90vh;
+
+display:flex;
+align-items:center;
 justify-content:center;
 
-align-items:flex-start;
-gap:20px;
-padding-left:120px; 
+text-align:center;
 
-background:url('./assets/hero.png') no-repeat center center/cover;
+background:linear-gradient(
+180deg,
+#0f172a 0%,
+#020617 100%
+);
+}
+
+.hero h1{
+font-size:72px;
+font-weight:700;
+
+background:linear-gradient(90deg,#fff,#94a3b8);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
 }
 
 .hero p{
-font-size:36px;
-font-weight:600;
-letter-spacing:2px;
+font-size:24px;
+color:#94a3b8;
+margin-top:10px;
 }
 
-.buttons a{
-background:white;
-color:black;
-padding:10px 20px;
-margin:10px;
-text-decoration:none;
-border-radius:20px;
+/* ---------- PROJECTS ---------- */
+
+.projects{
+display:flex;
+gap:30px;
+justify-content:center;
+flex-wrap:wrap;
 }
+
+.card{
+background:#1e293b;
+padding:20px;
+border-radius:15px;
+width:250px;
+
+transition:0.3s;
+}
+
+.card:hover{
+transform:translateY(-10px) scale(1.03);
+box-shadow:0 20px 40px rgba(0,0,0,0.5);
+}
+
+/* ---------- SKILLS ---------- */
 
 .skills{
 display:flex;
@@ -52,16 +121,657 @@ padding:20px;
 border-radius:10px;
 }
 
-.projects{
+/* ---------- TIMELINE ---------- */
+
+.timeline{
 display:flex;
-gap:30px;
-justify-content:center;
-flex-wrap:wrap;
+flex-direction:column;
+gap:20px;
+max-width:600px;
+margin:auto;
 }
 
-.card{
+.timeline-item{
 background:#1e293b;
 padding:20px;
-width:250px;
 border-radius:10px;
+}
+
+/* ---------- CONTACT ---------- */
+
+.contact-box{
+margin-top:60px;
+
+background:rgba(255,255,255,0.04);
+backdrop-filter:blur(30px);
+
+padding:40px;
+border-radius:24px;
+
+max-width:520px;
+margin-left:auto;
+margin-right:auto;
+
+box-shadow:0 20px 60px rgba(0,0,0,0.6);
+border:1px solid rgba(255,255,255,0.05);
+}
+
+.contact-box h3{
+margin-bottom:25px;
+font-size:24px;
+font-weight:600;
+color:#e0e7ff;
+}
+
+.contact-form{
+display:flex;
+flex-direction:column;
+gap:15px;
+}
+
+/* inputs */
+.contact-form input,
+.contact-form textarea{
+padding:14px 16px;
+border-radius:12px;
+border:1px solid transparent;
+
+background:#020617;
+color:white;
+
+font-size:14px;
+transition:0.3s;
+}
+
+input::placeholder,
+textarea::placeholder{
+color:#64748b;
+}
+
+/* focus */
+.contact-form input:focus,
+.contact-form textarea:focus{
+border:1px solid #6366f1;
+box-shadow:0 0 0 4px rgba(99,102,241,0.15);
+outline:none;
+}
+
+/* textarea */
+.contact-form textarea{
+min-height:120px;
+resize:none;
+}
+
+/* button */
+.contact-form button{
+margin-top:10px;
+padding:14px;
+
+border:none;
+border-radius:14px;
+
+background:linear-gradient(135deg,#6366f1,#8b5cf6);
+color:white;
+
+font-weight:600;
+
+cursor:pointer;
+transition:0.3s;
+}
+
+.contact-form button:hover{
+transform:translateY(-2px) scale(1.02);
+box-shadow:0 15px 40px rgba(99,102,241,0.5);
+}
+
+.status{
+margin-top:15px;
+font-size:14px;
+color:#4ade80;
+}
+
+/* ---------- LOADER ---------- */
+
+.loader{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+
+background:#020617;
+color:white;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+font-size:40px;
+
+z-index:9999;
+}
+
+/* ---------- CURSOR GLOW ---------- */
+
+.cursor-glow{
+position:fixed;
+width:300px;
+height:300px;
+
+background:radial-gradient(circle, rgba(99,102,241,0.3), transparent);
+
+pointer-events:none;
+transform:translate(-50%,-50%);
+z-index:0;
+}
+
+/* ---------- BUTTON GLOBAL ---------- */
+
+button{
+transition:0.3s;
+}
+
+button:hover{
+transform:translateY(-3px);
+}
+
+/* ---------- MOBILE ---------- */
+
+@media (max-width:768px){
+
+.hero h1{
+font-size:40px;
+}
+
+.hero p{
+font-size:18px;
+}
+
+section{
+padding:60px 20px;
+}
+
+.projects{
+flex-direction:column;
+align-items:center;
+}
+
+}
+
+.contact-form{
+display:flex;
+flex-direction:column; /* головне */
+gap:15px;
+
+width:100%;
+}
+
+/* щоб поля займали всю ширину */
+.contact-form input,
+.contact-form textarea{
+width:100%;
+box-sizing:border-box;
+}
+
+.contact-box{
+display:flex;
+flex-direction:column;
+align-items:center;
+}
+
+.contact-form{
+max-width:400px;
+}
+
+.input-group{
+position:relative;
+width:100%;
+}
+
+.input-group input,
+.input-group textarea{
+width:100%;
+padding:18px 16px;
+border-radius:12px;
+
+border:1px solid rgba(255,255,255,0.1);
+
+background:#020617;
+color:white;
+
+font-size:14px;
+
+outline:none;
+transition:0.3s;
+}
+
+.input-group label{
+position:absolute;
+left:16px;
+top:50%;
+transform:translateY(-50%);
+
+color:#64748b;
+font-size:14px;
+
+pointer-events:none;
+transition:0.3s;
+}
+
+.input-group input:focus + label,
+.input-group input:valid + label,
+.input-group textarea:focus + label,
+.input-group textarea:valid + label{
+top:6px;
+font-size:12px;
+color:#6366f1;
+}
+
+.input-group textarea{
+min-height:120px;
+resize:none;
+padding-top:20px;
+}
+
+.input-group input:focus,
+.input-group textarea:focus{
+border:1px solid #6366f1;
+box-shadow:0 0 0 4px rgba(99,102,241,0.15);
+}
+
+/* контейнер */
+.contact-info{
+display:flex;
+flex-direction:column;
+gap:20px;
+
+max-width:500px;
+margin:40px auto;
+}
+
+/* картка */
+.contact-item{
+display:flex;
+align-items:center;
+gap:15px;
+
+padding:20px;
+
+border-radius:16px;
+
+background:rgba(255,255,255,0.04);
+backdrop-filter:blur(20px);
+
+text-decoration:none;
+color:white;
+
+transition:0.3s;
+border:1px solid rgba(255,255,255,0.05);
+}
+
+/* іконка */
+.contact-item span{
+font-size:24px;
+}
+
+/* текст */
+.contact-item h4{
+margin:0;
+font-size:16px;
+color:#c7d2fe;
+}
+
+.contact-item p{
+margin:0;
+font-size:14px;
+color:#94a3b8;
+}
+
+/* hover ефект */
+.contact-item:hover{
+transform:translateY(-5px) scale(1.02);
+box-shadow:0 20px 40px rgba(0,0,0,0.5);
+border:1px solid rgba(99,102,241,0.5);
+}
+
+.contact-info{
+display:flex;
+flex-direction:column;
+gap:20px;
+
+max-width:520px;
+margin:50px auto;
+}
+
+/* картка */
+.contact-item{
+display:flex;
+align-items:center;
+gap:20px;
+
+padding:22px;
+
+border-radius:20px;
+
+background:rgba(255,255,255,0.04);
+backdrop-filter:blur(25px);
+
+border:1px solid rgba(255,255,255,0.05);
+
+cursor:pointer;
+text-decoration:none;
+color:white;
+
+transition:0.4s;
+position:relative;
+overflow:hidden;
+}
+
+/* glow background */
+.contact-item::before{
+content:"";
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+
+background:linear-gradient(120deg, transparent, rgba(99,102,241,0.3), transparent);
+opacity:0;
+transition:0.4s;
+}
+
+/* hover */
+.contact-item:hover{
+transform:translateY(-6px) scale(1.02);
+box-shadow:0 25px 60px rgba(0,0,0,0.6);
+border:1px solid rgba(99,102,241,0.5);
+}
+
+.contact-item:hover::before{
+opacity:1;
+}
+
+/* іконка */
+.icon{
+font-size:26px;
+width:50px;
+height:50px;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+border-radius:12px;
+
+background:linear-gradient(135deg,#6366f1,#8b5cf6);
+}
+
+/* текст */
+.contact-item h4{
+margin:0;
+font-size:16px;
+color:#e0e7ff;
+}
+
+.contact-item p{
+margin:0;
+font-size:14px;
+color:#94a3b8;
+}
+
+/* плавна анімація */
+.contact-item{
+animation:fadeUp 0.6s ease forwards;
+opacity:0;
+}
+
+.contact-item:nth-child(1){ animation-delay:0.1s }
+.contact-item:nth-child(2){ animation-delay:0.2s }
+.contact-item:nth-child(3){ animation-delay:0.3s }
+
+@keyframes fadeUp{
+to{
+opacity:1;
+transform:translateY(0);
+}
+from{
+opacity:0;
+transform:translateY(20px);
+}
+}
+
+.hero{
+height:90vh;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+background:#0f172a;
+}
+
+.hero-container{
+display:flex;
+align-items:center;
+justify-content:space-between;
+
+width:90%;
+max-width:1200px;
+}
+
+/* текст */
+.hero-text{
+max-width:500px;
+}
+
+.hero-text h1{
+font-size:64px;
+margin-bottom:10px;
+}
+
+.hero-text p{
+font-size:22px;
+color:#94a3b8;
+}
+
+/* фото */
+.hero-image img{
+width:350px;
+height:350px;
+object-fit:cover;
+
+border-radius:20px;
+
+box-shadow:0 20px 60px rgba(0,0,0,0.5);
+}
+
+/* адаптив */
+@media (max-width:768px){
+
+.hero-container{
+flex-direction:column;
+gap:30px;
+text-align:center;
+}
+
+.hero-image img{
+width:250px;
+height:250px;
+}
+
+}
+
+.hero{
+height:100vh;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+position:relative;
+
+background:url('../assets/hero.png') center/cover no-repeat;
+}
+
+/* затемнення (щоб текст було видно) */
+.hero::before{
+content:"";
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+
+background:rgba(0,0,0,0.5); /* можна змінити */
+
+z-index:1;
+}
+
+/* текст */
+.hero-content{
+position:relative;
+z-index:2;
+
+text-align:center;
+color:white;
+}
+
+.hero h1{
+font-size:72px;
+margin-bottom:10px;
+}
+
+.hero p{
+font-size:24px;
+margin-bottom:20px;
+}
+
+/* кнопка */
+.hero button{
+padding:14px 30px;
+border:none;
+border-radius:12px;
+
+background:#6366f1;
+color:white;
+
+cursor:pointer;
+transition:0.3s;
+}
+
+.hero button:hover{
+transform:scale(1.05);
+box-shadow:0 10px 30px rgba(99,102,241,0.5);
+}
+
+.hero{
+height:100vh;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+position:relative;
+
+/* фото */
+background:url('../assets/hero.png') center/cover no-repeat;
+}
+
+/* overlay (дуже важливо!) */
+.hero-overlay{
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+
+/* преміум затемнення */
+background:linear-gradient(
+180deg,
+rgba(0,0,0,0.6),
+rgba(0,0,0,0.85)
+);
+
+z-index:1;
+}
+
+/* контент */
+.hero-content{
+position:relative;
+z-index:2;
+text-align:center;
+color:white;
+}
+
+/* текст */
+.hero h1{
+font-size:72px;
+font-weight:700;
+
+background:linear-gradient(90deg,#fff,#c7d2fe);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+
+margin-bottom:10px;
+}
+
+.hero p{
+font-size:24px;
+color:#cbd5f5;
+margin-bottom:25px;
+}
+
+/* кнопка */
+.hero button{
+padding:14px 30px;
+border:none;
+border-radius:14px;
+
+background:linear-gradient(135deg,#6366f1,#8b5cf6);
+color:white;
+
+font-weight:600;
+cursor:pointer;
+
+transition:0.3s;
+}
+
+.hero button:hover{
+transform:translateY(-3px);
+box-shadow:0 15px 40px rgba(99,102,241,0.5);
+}
+.hero{
+background:url('/hero.png') center/cover no-repeat;
+}
+
+.hero-overlay{
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+
+/* було темно → робимо легше */
+background:linear-gradient(
+180deg,
+rgba(0,0,0,0.3),
+rgba(0,0,0,0.5)
+);
+
+z-index:1;
+}
+
+.hero-overlay{
+background:linear-gradient(
+180deg,
+rgba(0,0,0,0.2),
+rgba(0,0,0,0.6)
+);
+}
+
+.hero{
+background-size:cover;
+background-position:center;
+background-attachment:fixed; /* легкий паралакс */
 }
