@@ -24,6 +24,8 @@ dist-ssr
 *.sw?
 node_modules
 portfolio/node_modules
+
+
+node_modules
 dist
-portfolio/dist
 .vite
