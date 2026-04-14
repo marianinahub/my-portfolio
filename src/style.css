@@ -778,12 +778,14 @@ background-attachment:fixed; /* легкий паралакс */
 
 /* ---------- LANGUAGE SWITCH PREMIUM ---------- */
 
+
 .lang-switch{
 position:fixed;
-top:20px;
+top:10px;  
 right:20px;
 z-index:9999;
 cursor:pointer;
+}
 }
 
 /* контейнер */
