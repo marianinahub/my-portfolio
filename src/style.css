@@ -675,7 +675,7 @@ justify-content:center;
 position:relative;
 
 /* фото */
-background:url('../assets/hero.png') center/cover no-repeat;
+background:url('/public/hero.png') center/cover no-repeat;
 }
 
 /* overlay (дуже важливо!) */
