@@ -879,3 +879,13 @@ background-position:center top;
 min-height:80vh; /* щоб не було пустоти */
 }
 }
+
+@media (max-width:768px){
+
+.lang-switch{
+top:auto;
+bottom:20px;
+right:20px;
+}
+
+}
