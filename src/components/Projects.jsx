@@ -23,7 +23,10 @@ return(
 
 <div className="projects">
 
-{Array.isArray(repos) && repos.slice(0,6).map(repo=>(
+{Array.isArray(repos) && repos
+  .filter(repo => repo.name !== "my-portfolio") 
+  .slice(0,6)
+  .map(repo => (
 <div className="card" key={repo.id}>
 <h3>{repo.name}</h3>
 <p>{repo.description}</p>

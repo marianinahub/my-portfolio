@@ -870,3 +870,12 @@ width:24px;
 height:24px;
 }
 }
+
+@media (max-width:768px){
+.hero{
+background-size:contain;
+background-position:center top;
+
+min-height:80vh; /* щоб не було пустоти */
+}
+}
